@@ -41,11 +41,11 @@ export default defineComponent({
   },
   setup() {
     const { routerManager } = mixin();
-    const store = useStore();
+    const store             = useStore();
 
-    const collapse = ref(true);
-    const username = ref("admin");
-    const userPic = computed(() => store.getters.userPic);
+    const collapse  = ref(true);
+    const username  = ref("admin");
+    const userPic   = computed(() => store.getters.userPic);
     const nusicName = ref(MUSICNAME);
 
     onMounted(() => {

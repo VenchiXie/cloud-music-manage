@@ -46,11 +46,11 @@ export default defineComponent({
     const { proxy } = getCurrentInstance();
     const store = useStore();
 
-    const tableData = ref([]); // 记录歌曲，用于显示
-    const tempDate = ref([]); // 记录歌曲，用于搜索时能临时记录一份歌曲列表
+    const tableData      = ref([]);       // 记录歌曲，用于显示
+    const tempDate       = ref([]);       // 记录歌曲，用于搜索时能临时记录一份歌曲列表
     const breadcrumbList = computed(() => store.getters.breadcrumbList);
 
-    const searchWord = ref(""); // 记录输入框输入的内容
+    const searchWord = ref("");  // 记录输入框输入的内容
     watch(searchWord, () => {
       if (searchWord.value === "") {
         tableData.value = tempDate.value;
@@ -69,7 +69,7 @@ export default defineComponent({
     // 通过用户 ID 获取用户收藏的歌曲 ID
     async function getData() {
       tableData.value = [];
-      tempDate.value = [];
+      tempDate.value  = [];
       const result = (await HttpManager.getCollectionOfUser(proxy.$route.query.id)) as any;
       for (let item of result.data) {
         const result = await HttpManager.getSongOfId(item.songId) as any;
@@ -81,9 +81,9 @@ export default defineComponent({
     /**
      * 删除
      */
-    const idx = ref(-1); // 记录当前要删除的行
-    const multipleSelection = ref([]); // 记录当前要删除的列表
-    const delVisible = ref(false); // 显示删除框
+    const idx               = ref(-1);     // 记录当前要删除的行
+    const multipleSelection = ref([]);     // 记录当前要删除的列表
+    const delVisible        = ref(false);  // 显示删除框
 
     async function confirm() {
       const result = (await HttpManager.deleteCollection(proxy.$route.query.id, idx.value)) as ResponseBody;

@@ -24,7 +24,7 @@ export default defineComponent({
   setup(props) {
     const { proxy } = getCurrentInstance();
 
-    const { delVisible } = toRefs(props);
+    const { delVisible }      = toRefs(props);
     const centerDialogVisible = ref(delVisible.value);
 
     watch(delVisible, (value) => {

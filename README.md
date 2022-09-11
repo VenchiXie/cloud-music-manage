@@ -1,6 +1,5 @@
-# cloud-music-manage
-
-云音乐后台管理
+# cloud-music-client
+云音乐客户端
 
 ## 说明
 
@@ -20,6 +19,15 @@ TypeScript + Vue3 + Vue-Router + Vuex + Axios + ElementPlus + Echarts
 
 Java + Spring Boot@2.6 + MyBatis + MySQL+图形化界面 Navicat
 
+## 各端地址
+
+1. 云音乐客户端: https://github.com/LinXiuci/cloud-music-client
+
+2. 云音乐管理后台: https://github.com/LinXiuci/cloud-music-manage
+
+3. 云音乐服务端: https://github.com/LinXiuci/cloud-music-server
+
+
 ## 开发环境
 
 1. JDK： jdk11
@@ -31,38 +39,45 @@ Java + Spring Boot@2.6 + MyBatis + MySQL+图形化界面 Navicat
 
 
 ### 客户端：
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659043135718.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m2.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042365149.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m1.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042576972.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m5.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042661244.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m3.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042685231.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m4.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042304807.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m6.pngg)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042745163.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m7.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042760578.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m8.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042725361.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m9.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659042745163.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m11.png)<br/>
+
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/m10.png)<br/>
+
 
 
 ### 后台管理
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659043355339.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/pc4.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659043369654.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/pc1.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659043390895.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/pc3.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659043404804.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/pc2.png)<br/>
 
-![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/1659043428857.jpg)<br/>
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/pc7.png)<br/>
+
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/pc6.png)<br/>
+
+![](https://cdn.jsdelivr.net/gh/LinXiuci/image/img/pc5.png)<br/>
 
 
 

@@ -16,8 +16,8 @@ export default defineComponent({
       divRef.value = el;
     };
 
-    const url = computed(() => store.getters.url); // 音乐链接
-    const isPlay = computed(() => store.getters.isPlay); // 播放状态
+    const url    = computed(() => store.getters.url);     // 音乐链接
+    const isPlay = computed(() => store.getters.isPlay);  // 播放状态
     // 监听播放还是暂停
     watch(isPlay, () => {
       togglePlay();

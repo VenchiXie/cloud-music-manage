@@ -25,11 +25,11 @@ import { RouterName, MUSICNAME } from "@/enums";
 
 export default defineComponent({
   setup() {
-    const { proxy } = getCurrentInstance();
+    const { proxy }         = getCurrentInstance();
     const { routerManager } = mixin();
 
     const musicName = ref(MUSICNAME);
-    const ruleForm = reactive({
+    const ruleForm  = reactive({
       username: "admin",
       password: "123",
     });

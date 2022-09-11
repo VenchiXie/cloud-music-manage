@@ -56,35 +56,53 @@
   <el-row :gutter="20">
     <el-col :span="12">
       <h3>用户性别比例</h3>
-      <el-card class="cav-info" shadow="hover" :body-style="{ padding: '0px' }" id="userSex"></el-card>
+      <el-card
+        class="cav-info"
+        shadow="hover"
+        :body-style="{ padding: '0px' }"
+        id="userSex"
+      ></el-card>
     </el-col>
     <el-col :span="12">
       <h3>歌曲类型</h3>
-      <el-card class="cav-info" shadow="hover" :body-style="{ padding: '0px' }" id="songStyle"></el-card>
+      <el-card
+        class="cav-info"
+        shadow="hover"
+        :body-style="{ padding: '0px' }"
+        id="songStyle"
+      ></el-card>
     </el-col>
   </el-row>
   <el-row :gutter="20">
     <el-col :span="12">
       <h3>歌手性别比例</h3>
-      <el-card class="cav-info" shadow="hover" :body-style="{ padding: '0px' }" id="singerSex"></el-card>
+      <el-card
+        class="cav-info"
+        shadow="hover"
+        :body-style="{ padding: '0px' }"
+        id="singerSex"
+      ></el-card>
     </el-col>
     <el-col :span="12">
       <h3>歌手国籍</h3>
-      <el-card class="cav-info" shadow="hover" :body-style="{ padding: '0px' }" id="country"></el-card>
+      <el-card
+        class="cav-info"
+        shadow="hover"
+        :body-style="{ padding: '0px' }"
+        id="country"
+      ></el-card>
     </el-col>
   </el-row>
 </template>
 <script lang="ts" setup>
-// import { ref, reactive, getCurrentInstance } from "vue";
 import { ref, reactive } from "vue";
 import * as echarts from "echarts";
 import { Mic, Document, User, Headset } from "@element-plus/icons-vue";
 import { HttpManager } from "@/api/index";
 
-// const { proxy } = getCurrentInstance();
-const userCount = ref(0);
-const songCount = ref(0);
-const singerCount = ref(0);
+const userCount     = ref(0);
+const songCount     = ref(0);
+const singerCount   = ref(0);
 const songListCount = ref(0);
 const userSex = reactive({
   series: [
@@ -93,11 +111,11 @@ const userSex = reactive({
       data: [
         {
           value: 0,
-          name: "男",
+          name : "男",
         },
         {
           value: 0,
-          name: "女",
+          name : "女",
         },
       ],
     },
@@ -114,6 +132,12 @@ const songStyle = reactive({
   series: [
     {
       data: [0, 0, 0, 0, 0, 0, 0],
+      itemStyle: {
+        color: "#91cc29",
+        shadowColor: "#91cc05",
+        borderType: "dashed",
+        opacity: 0.5,
+      },
       type: "bar",
       barWidth: "20%",
     },
@@ -139,16 +163,7 @@ const singerSex = reactive({
 const country = reactive({
   xAxis: {
     type: "category",
-    data: [
-      "中国",
-      "韩国",
-      "意大利",
-      "新加坡",
-      "美国",
-      // "马来西亚",
-      "西班牙",
-      "日本",
-    ],
+    data: ["中国", "韩国", "意大利", "新加坡", "美国", "西班牙", "日本"],
   },
   yAxis: {
     type: "value",
@@ -156,6 +171,12 @@ const country = reactive({
   series: [
     {
       data: [0, 0, 0, 0, 0, 0, 0, 0],
+      itemStyle: {
+        color: "#F5B041",
+        shadowColor: "#91cc05",
+        borderType: "dashed",
+        opacity: 0.5,
+      },
       type: "bar",
       barWidth: "20%",
     },
@@ -178,7 +199,6 @@ HttpManager.getAllUser().then((res) => {
   userSex.series[0].data.push(setSex(0, result.data));
   userSex.series[0].data.push(setSex(1, result.data));
 
-  // const userSexChart = echarts.init(proxy.$refs.userSex);
   const userSexChart = echarts.init(document.getElementById("userSex"));
   userSexChart.setOption(userSex);
 });
@@ -196,7 +216,6 @@ HttpManager.getSongList().then((res) => {
       }
     }
   }
-  // const songStyleChart = echarts.init(proxy.$refs.songStyle);
   const songStyleChart = echarts.init(document.getElementById("songStyle"));
   songStyleChart.setOption(songStyle);
 });

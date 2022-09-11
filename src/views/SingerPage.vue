@@ -5,7 +5,7 @@
       <el-input placeholder="筛选歌手" v-model="searchWord"></el-input>
       <el-button type="primary" @click="centerDialogVisible = true">添加歌手</el-button>
     </div>
-    <el-table height="550px" border size="small" :data="data" @selection-change="handleSelectionChange">
+    <el-table height="650px" border size="small" :data="data" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="40" align="center"></el-table-column>
       <el-table-column label="ID" prop="id" width="50" align="center"></el-table-column>
       <el-table-column label="歌手图片" prop="pic" width="110" align="center">
@@ -147,10 +147,10 @@ export default defineComponent({
     const { proxy } = getCurrentInstance();
     const { changeSex, routerManager, beforeImgUpload } = mixin();
 
-    const tableData = ref([]); // 记录歌曲，用于显示
-    const tempDate = ref([]); // 记录歌曲，用于搜索时能临时记录一份歌曲列表
-    const pageSize = ref(5); // 页数
-    const currentPage = ref(1); // 当前页
+    const tableData   = ref([]);  // 记录歌曲，用于显示
+    const tempDate    = ref([]);  // 记录歌曲，用于搜索时能临时记录一份歌曲列表
+    const pageSize    = ref(5);   // 页数
+    const currentPage = ref(1);   // 当前页
 
     // 计算当前表格中的数据
     const data = computed(() => {
@@ -175,10 +175,10 @@ export default defineComponent({
 
     async function getData() {
       tableData.value = [];
-      tempDate.value = [];
-      const result = (await HttpManager.getAllSinger()) as ResponseBody;
-      tableData.value = result.data;
-      tempDate.value = result.data;
+      tempDate.value  = [];
+      const result    = (await HttpManager.getAllSinger()) as ResponseBody;
+      tableData.value   = result.data;
+      tempDate.value    = result.data;
       currentPage.value = 1;
     }
     // 获取当前页
@@ -215,20 +215,20 @@ export default defineComponent({
      */
     const centerDialogVisible = ref(false);
     const registerForm = reactive({
-      name: "",
-      sex: "",
-      birth: new Date(),
-      location: "",
+      name        : "",
+      sex         : "",
+      birth       : new Date(),
+      location    : "",
       introduction: "",
     });
     const singerRule = reactive({
       name: [{ required: true, trigger: "change" }],
-      sex: [{ required: true, trigger: "change" }],
+      sex : [{ required: true, trigger: "change" }],
     });
 
     async function addsinger() {
       let datetime = getBirth(registerForm.birth);
-      let params = new URLSearchParams();
+      let params   = new URLSearchParams();
       params.append("name", registerForm.name);
       params.append("sex", registerForm.sex);
       params.append("birth", datetime);
@@ -243,10 +243,10 @@ export default defineComponent({
 
       if (result.success) {
         getData();
-        registerForm.birth = new Date();
-        registerForm.name = "";
-        registerForm.sex = "";
-        registerForm.location = "";
+        registerForm.birth        = new Date();
+        registerForm.name         = "";
+        registerForm.sex          = "";
+        registerForm.location     = "";
         registerForm.introduction = "";
       }
       centerDialogVisible.value = false;
@@ -257,29 +257,29 @@ export default defineComponent({
      */
     const editVisible = ref(false);
     const editForm = reactive({
-      id: "",
-      name: "",
-      sex: "",
-      pic: "",
-      birth: new Date(),
-      location: "",
+      id          : "",
+      name        : "",
+      sex         : "",
+      pic         : "",
+      birth       : new Date(),
+      location    : "",
       introduction: "",
     });
 
     function editRow(row) {
-      editVisible.value = true;
-      editForm.id = row.id;
-      editForm.name = row.name;
-      editForm.sex = row.sex;
-      editForm.pic = row.pic;
-      editForm.birth = row.birth;
-      editForm.location = row.location;
+      editVisible.value     = true;
+      editForm.id           = row.id;
+      editForm.name         = row.name;
+      editForm.sex          = row.sex;
+      editForm.pic          = row.pic;
+      editForm.birth        = row.birth;
+      editForm.location     = row.location;
       editForm.introduction = row.introduction;
     }
     async function saveEdit() {
       try {
         let datetime = getBirth(new Date(editForm.birth));
-        let params = new URLSearchParams();
+        let params   = new URLSearchParams();
         params.append("id", editForm.id);
         params.append("name", editForm.name);
         params.append("sex", editForm.sex);
@@ -310,9 +310,9 @@ export default defineComponent({
     /**
      * 删除
      */
-    const idx = ref(-1); // 记录当前要删除的行
-    const multipleSelection = ref([]); // 记录当前要删除的列表
-    const delVisible = ref(false); // 显示删除框
+    const idx               = ref(-1);     // 记录当前要删除的行
+    const multipleSelection = ref([]);     // 记录当前要删除的列表
+    const delVisible        = ref(false);  // 显示删除框
 
     async function confirm() {
       const result = (await HttpManager.deleteSinger(idx.value)) as ResponseBody;
@@ -324,7 +324,7 @@ export default defineComponent({
       delVisible.value = false;
     }
     function deleteRow(id) {
-      idx.value = id;
+      idx.value        = id;
       delVisible.value = true;
     }
     function handleSelectionChange(val) {

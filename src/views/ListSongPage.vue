@@ -57,13 +57,13 @@ export default defineComponent({
   },
   setup() {
     const { proxy } = getCurrentInstance();
-    const store = useStore();
+    const store     = useStore();
 
-    const tableData = ref([]); // 记录歌曲，用于显示
-    const tempDate = ref([]); // 记录歌曲，用于搜索时能临时记录一份歌曲列表
+    const tableData      = ref([]);                                       // 记录歌曲，用于显示
+    const tempDate       = ref([]);                                       // 记录歌曲，用于搜索时能临时记录一份歌曲列表
     const breadcrumbList = computed(() => store.getters.breadcrumbList);
 
-    const searchWord = ref(""); // 记录输入框输入的内容
+    const searchWord = ref("");  // 记录输入框输入的内容
     watch(searchWord, () => {
       if (searchWord.value === "") {
         tableData.value = tempDate.value;
@@ -82,7 +82,7 @@ export default defineComponent({
     // 获取歌单
     async function getData() {
       tableData.value = [];
-      tempDate.value = [];
+      tempDate.value  = [];
       const result = (await HttpManager.getListSongOfSongId(proxy.$route.query.id)) as ResponseBody;
       for (let item of result.data) {
         const result = await HttpManager.getSongOfId(item.songId) as ResponseBody;
@@ -97,7 +97,7 @@ export default defineComponent({
     const centerDialogVisible = ref(false);
     const registerForm = reactive({
       singerName: "",
-      songName: "",
+      songName  : "",
     });
 
     // 获取要添加歌曲的ID
@@ -130,9 +130,9 @@ export default defineComponent({
     /**
      * 删除
      */
-    const idx = ref(-1); // 记录当前要删除的行
-    const multipleSelection = ref([]); // 记录当前要删除的列表
-    const delVisible = ref(false); // 显示删除框
+    const idx               = ref(-1);     // 记录当前要删除的行
+    const multipleSelection = ref([]);     // 记录当前要删除的列表
+    const delVisible        = ref(false);  // 显示删除框
 
     async function confirm() {
       const result = await HttpManager.deleteListSong(idx.value) as ResponseBody;

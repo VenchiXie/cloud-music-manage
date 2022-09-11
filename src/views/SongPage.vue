@@ -139,19 +139,19 @@ export default defineComponent({
     const { routerManager, beforeImgUpload, beforeSongUpload } = mixin();
     const store = useStore();
 
-    const tableData = ref([]); // 记录歌曲，用于显示
-    const tempDate = ref([]); // 记录歌曲，用于搜索时能临时记录一份歌曲列表
-    const pageSize = ref(5); // 页数
-    const currentPage = ref(1); // 当前页
-    const singerId = ref("");
-    const singerName = ref("");
-    const toggle = ref(false); // 控制播放图标状态
-    const BOFANG = ref(Icon.BOFANG);
-    const ZANTING = ref(Icon.ZANTING);
+    const tableData   = ref([]);            // 记录歌曲，用于显示
+    const tempDate    = ref([]);            // 记录歌曲，用于搜索时能临时记录一份歌曲列表
+    const pageSize    = ref(5);             // 页数
+    const currentPage = ref(1);             // 当前页
+    const singerId    = ref("");
+    const singerName  = ref("");
+    const toggle      = ref(false);         // 控制播放图标状态
+    const BOFANG      = ref(Icon.BOFANG);
+    const ZANTING     = ref(Icon.ZANTING);
     const breadcrumbList = computed(() => store.getters.breadcrumbList);
 
-    const isPlay = computed(() => store.getters.isPlay); // 播放状态
-    const playIcon = computed(() => (isPlay.value ? ZANTING.value : BOFANG.value)); // 播放状态
+    const isPlay   = computed(() => store.getters.isPlay);                           // 播放状态
+    const playIcon = computed(() => (isPlay.value ? ZANTING.value : BOFANG.value));  // 播放状态
     // 计算当前表格中的数据
     const data = computed(() => {
       return tableData.value.slice((currentPage.value - 1) * pageSize.value, currentPage.value * pageSize.value);
@@ -171,7 +171,7 @@ export default defineComponent({
       }
     });
 
-    singerId.value = proxy.$route.query.id as string;
+    singerId.value   = proxy.$route.query.id as string;
     singerName.value = proxy.$route.query.name as string;
     proxy.$store.commit("setIsPlay", false);
     getData();
@@ -179,10 +179,10 @@ export default defineComponent({
     // 获取歌曲
     async function getData() {
       tableData.value = [];
-      tempDate.value = [];
-      const result = (await HttpManager.getSongOfSingerId(singerId.value)) as ResponseBody;
-      tableData.value = result.data;
-      tempDate.value = result.data;
+      tempDate.value  = [];
+      const result    = (await HttpManager.getSongOfSingerId(singerId.value)) as ResponseBody;
+      tableData.value   = result.data;
+      tempDate.value    = result.data;
       currentPage.value = 1;
     }
     function setSongUrl(row) {
@@ -274,10 +274,10 @@ export default defineComponent({
           });
           if (res.success) {
             getData();
-            registerForm.name = "";
-            registerForm.singerName = "";
+            registerForm.name         = "";
+            registerForm.singerName   = "";
             registerForm.introduction = "";
-            registerForm.lyric = "";
+            registerForm.lyric        = "";
           }
         }
       };
@@ -303,20 +303,20 @@ export default defineComponent({
     });
 
     function editRow(row) {
-      idx.value = row.id;
-      editForm.id = row.id;
-      editForm.singerId = row.singerId;
-      editForm.name = row.name;
+      idx.value             = row.id;
+      editForm.id           = row.id;
+      editForm.singerId     = row.singerId;
+      editForm.name         = row.name;
       editForm.introduction = row.introduction;
-      editForm.createTime = row.createTime;
-      editForm.updateTime = row.updateTime;
-      editForm.pic = row.pic;
-      editForm.lyric = row.lyric;
-      editForm.url = row.url;
-      editVisible.value = true;
+      editForm.createTime   = row.createTime;
+      editForm.updateTime   = row.updateTime;
+      editForm.pic          = row.pic;
+      editForm.lyric        = row.lyric;
+      editForm.url          = row.url;
+      editVisible.value     = true;
     }
     async function saveEdit() {
-      const params = new URLSearchParams();
+      const params   = new URLSearchParams();
       const songName = editForm.name;
       params.append("id", editForm.id);
       params.append("singerId", editForm.singerId);
@@ -335,9 +335,9 @@ export default defineComponent({
     /**
      * 删除
      */
-    const idx = ref(-1); // 记录当前要删除的行
-    const multipleSelection = ref([]); // 记录当前要删除的列表
-    const delVisible = ref(false); // 显示删除框
+    const idx               = ref(-1);     // 记录当前要删除的行
+    const multipleSelection = ref([]);     // 记录当前要删除的列表
+    const delVisible        = ref(false);  // 显示删除框
 
     async function confirm() {
       const result = (await HttpManager.deleteSong(idx.value)) as ResponseBody;
